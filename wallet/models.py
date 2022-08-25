@@ -1,14 +1,5 @@
-from ast import mod
-from curses.ascii import NUL
-from distutils.command.upload import upload
-from email.policy import default
-from inspect import signature
-from locale import currency
-from pyexpat import model
-from termios import TAB1
-from time import timezone
+
 from tkinter import CASCADE
-from unittest import mock
 from django.db import models
 # from requests import delete
 
@@ -28,12 +19,14 @@ class Customer(models.Model):
     employment_status = models.BooleanField(null=True)
     signature=models.ImageField(default='default.jpg',upload_to='profile_pics')
 
-
+class Currency(models.Model):
+    country=models.CharField(max_length=15)
+    symbol=models.CharField(max_length=15) 
 
 class Wallet(models.Model):
     balance = models.IntegerField(default="")
     customer_id = models.IntegerField(default="")
-    # currency=models.ForeignKey(on_delete=CASCADE,null=True)
+    currency=models.ForeignKey(Currency,on_delete=models.CASCADE,null=True)
     time = models.DateTimeField(default="")
     status = models.CharField(max_length=15,default="")
     history = models.DateTimeField(default="")
@@ -47,19 +40,19 @@ class Account(models.Model):
     account_number = models.IntegerField()
     account_type = models.CharField(max_length=30)
     balance = models.IntegerField()
-    saving=models.IntegerField
+    saving=models.IntegerField(null=True)
     name = models.CharField(max_length=30)
     wallet = models.ForeignKey(Wallet, on_delete= models.CASCADE)
 
 class Transaction(models.Model):
-    transaction_code = models.CharField(max_length=30)
+    transaction_code = models.CharField(max_length=30,null=True)
     wallet = models.ForeignKey(Wallet, on_delete=models.CASCADE)
     transaction_amount = models.IntegerField()
     transaction_type = models.CharField(max_length=30)
     transaction_charge = models.IntegerField()
     transaction_time = models.DateTimeField()
     reciept = models.CharField(max_length=8,null=True)
-    # origin_account = models.ForeignKey(Account, on_delete=models.CASCADE,null=True)
+    origin_account = models.ForeignKey(Customer, on_delete=models.CASCADE,null=True)
     destination_account = models.ForeignKey(Account, on_delete=models.CASCADE,null=True)
 
 class Card(models.Model):
@@ -80,7 +73,7 @@ class Third_Party(models.Model):
     type = models.CharField(max_length=6)
     transaction_account = models.IntegerField()
     account = models.OneToOneField(Account,on_delete=models.CASCADE,primary_key=True)
-    currency = models.CharField(max_length=3)
+    currency = models.ForeignKey(Currency,on_delete=models.CASCADE,null=True)
 
 class Notifications(models.Model):
     transaction = models.CharField(max_length=15)
@@ -98,7 +91,7 @@ class Receipt(models.Model):
     receipt_date = models.DateTimeField()
     bill_number = models.IntegerField()
     total_amount = models.IntegerField()
-    # transaction = models.ForeignKey()
+    transaction = models.ForeignKey(Transaction,on_delete=models.CASCADE,null=True)
     receipt_file = models.FileField()
 
 class Loan(models.Model):
