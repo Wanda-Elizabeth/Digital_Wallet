@@ -97,7 +97,7 @@ class Loan(models.Model):
     loan_type = models.CharField(max_length=15)
     amount = models.BigIntegerField()
     datetime = models.DateTimeField()
-    Wallet = models.ForeignKey(Wallet,on_delete=models.CASCADE)
+    wallet = models.ForeignKey(Wallet,on_delete=models.CASCADE)
     intrest_rate = models.IntegerField()
     payment_due_date = models.DateTimeField()
     loan_balance = models.IntegerField()
