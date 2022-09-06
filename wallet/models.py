@@ -1,5 +1,3 @@
-
-from tkinter import CASCADE
 from django.db import models
 # from requests import delete
 
@@ -14,7 +12,7 @@ class Customer(models.Model):
     id_number = models.CharField(max_length=10,null=True)
     phone_number = models.CharField(max_length=15,null=True)
     email = models.EmailField()
-    proile_picture = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    profile_picture = models.ImageField(default='default.jpg', upload_to='profile_pics')
     marital_status=models.CharField(max_length=8,null=True)
     employment_status = models.BooleanField(null=True)
     signature=models.ImageField(default='default.jpg',upload_to='profile_pics')
