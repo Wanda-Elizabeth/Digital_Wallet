@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        table th, td  {
+          border: 1px solid;
+          padding: 10px;
+        }
+        th{
+          color: white;
+          background-color: rgb(18, 21, 216);
+        }
+        table {
+          width: 80%;
+          border-collapse: collapse;
+          margin-left: 10%;
+        }
+    </style>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Customer_id</th>
+            <th>Gender</th>
+            <th>Points</th>
+            <th>Date_of_reward</th>
+            <th>Reciept</th>
+           
+        </tr>
+        {% for reward in rewards%}
+        <tr>
+            <td>{{reward.name}}</td>
+                <td>{{reward.customer_id}}</td>
+                    <td>{{reward.gender}}</td> 
+                    <td>{{reward.points}}</td>
+                <td>{{reward.date_of_reward}}</td>
+                    <td>{{reward.reciept}}</td>
+                   
+
+        </tr>
+    {% endfor %}
+    </table>
+    
+</body>
+</html>

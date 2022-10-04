@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        table th, td  {
+          border: 1px solid;
+          padding: 10px;
+        }
+        th{
+          color: white;
+          background-color: rgb(18, 21, 216);
+        }
+        table {
+          width: 80%;
+          border-collapse: collapse;
+          margin-left: 10%;
+        }
+    </style>
+    <table>
+        <tr>
+            <th>Account_number</th>
+            <th>Type</th>
+            <th>Balance</th>
+            <th>Saving</th>
+            <th>Name</th>
+            <th>Wallet</th>
+    
+        </tr>
+        {% for account in accounts%}
+        <tr>
+            <td>{{account.account_number}}</td>
+                <td>{{account.type}}</td>
+                    <td>{{account.balance}}</td> 
+                    <td>{{account.saving}}</td>
+                <td>{{account.name}}</td>
+                    <td>{{account.wallet}}</td>
+                  
+
+        </tr>
+    {% endfor %}
+    </table>
+    
+</body>
+</html>

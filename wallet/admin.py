@@ -40,8 +40,8 @@ class RecieptAdmin(admin.ModelAdmin):
     search_fields=("receipt_type","receipt_date","bill_number","total_amount","transaction","receipt_file")
 admin.site.register(Receipt,RecieptAdmin)
 class LoanAdmin(admin.ModelAdmin):
-    list_display=("loan_id","loan_type","amount","datetime","Wallet","intrest_rate")
-    search_fields=("loan_id","loan_type","amount","datetime","Wallet","intrest_rate")
+    list_display=("loan_id","loan_type","amount","datetime","wallet","intrest_rate")
+    search_fields=("loan_id","loan_type","amount","datetime","wallet","intrest_rate")
 admin.site.register(Loan,LoanAdmin)
 class RewardAdmin(admin.ModelAdmin):
     list_display=("name","customer_id","gender","points","date_of_reward","recipient")

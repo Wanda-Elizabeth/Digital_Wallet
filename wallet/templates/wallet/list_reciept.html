@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        table th, td  {
+          border: 1px solid;
+          padding: 10px;
+        }
+        th{
+          color: white;
+          background-color: rgb(18, 21, 216);
+        }
+        table {
+          width: 80%;
+          border-collapse: collapse;
+          margin-left: 10%;
+        }
+    </style>
+    <table>
+        <tr>
+            <th>Reciept_type</th>
+            <th>Reciept_date</th>
+            <th>Bill_number</th>
+            <th>Total_amount</th>
+            <th>Transaction</th>
+            <th>Reciept_file</th>
+            
+        </tr>
+        {% for reciept in reciepts%}
+        <tr>
+            <td>{{reciept.reciept_type}}</td>
+                <td>{{reciept.reciept_date}}</td>
+                    <td>{{reciept.bill_number}}</td> 
+                    <td>{{reciept.total_amount}}</td>
+                <td>{{reciept.transaction}}</td>
+                    <td>{{reciept.reciept_file}}</td>
+                
+        </tr>
+    {% endfor %}
+    </table>
+    
+</body>
+</html>

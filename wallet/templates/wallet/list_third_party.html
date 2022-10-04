@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        table th, td  {
+          border: 1px solid;
+          padding: 10px;
+        }
+        th{
+          color: white;
+          background-color: rgb(18, 21, 216);
+        }
+        table {
+          width: 80%;
+          border-collapse: collapse;
+          margin-left: 10%;
+        }
+    </style>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Transaction_account</th>
+            <th>Account</th>
+            <th>Currency</th>
+          
+        </tr>
+        {% for third_party in third_partys%}
+        <tr>
+            <td>{{third_party.name}}</td>
+                <td>{{third_party.id}}</td>
+                    <td>{{third_party.type}}</td> 
+                    <td>{{third_party.transaction_account}}</td>
+                <td>{{third_party.account}}</td>
+                    <td>{{third_party.currency}}</td>
+                
+
+        </tr>
+    {% endfor %}
+    </table>
+    
+</body>
+</html>
