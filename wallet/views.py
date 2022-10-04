@@ -24,7 +24,6 @@ def customer_profile(request,id):
     customer=Customer.objects.get(id=id)
     return render(request, "wallet/customer_profile.html",{"customer":customer})
 
-
     
 def edit_customer(request,id):
     customer=Customer.objects.get(id=id)
@@ -51,7 +50,13 @@ def register_currency(request):
 def list_currency(request):
     currency=Currency.objects.all()
     return render(request,"wallet/list_currency.html",
-    {"currency":currency})   
+    {"currency":currency})  
+
+def currency_profile(request,id):
+    currency=Currency.objects.get(id=id)
+    return render(request, "wallet/currency_profile.html",{"currency":currency})
+     
+
 
 
 def register_wallet(request):
@@ -67,7 +72,12 @@ def register_wallet(request):
 def list_wallet(request):
     wallet=Wallet.objects.all()
     return render(request,"wallet/list_wallet.html",
-    {"wallet":wallet})   
+    {"wallet":wallet})  
+
+def wallet_profile(request,id):
+    wallet=Wallet.objects.get(id=id)
+    return render(request, "wallet/wallet_profile.html",{"wallet":wallet})
+
 
 
 def register_account(request):
@@ -85,6 +95,11 @@ def list_account(request):
     return render(request,"wallet/list_account.html",
     {"accounts":accounts}) 
 
+def account_profile(request,id):
+    account=Account.objects.get(id=id)
+    return render(request, "wallet/account_profile.html",{"account":account})
+
+
 def register_transaction(request):
     if request.method=="POST":
          form=TransactionRegistrationForm(request.POST)
@@ -99,6 +114,11 @@ def list_transaction(request):
     transaction=Transaction.objects.all()
     return render(request,"wallet/list_transaction.html",
     {"transaction":transaction}) 
+
+def transaction_profile(request,id):
+    transaction=Transaction.objects.get(id=id)
+    return render(request, "wallet/transaction_profile.html",{"transaction":transaction})
+
 
 def register_notifications(request):
     if request.method=="POST":
@@ -115,6 +135,10 @@ def list_notifications(request):
     return render(request,"wallet/list_notifications.html",
     {"notifications":notifications}) 
 
+def notifications_profile(request,id):
+    notifications=Notifications.objects.get(id=id)
+    return render(request, "wallet/notifications_profile.html",{"notifications":notifications})   
+
 def register_card(request):
     if request.method=="POST":
          form=CardRegistrationForm(request.POST)
@@ -129,6 +153,11 @@ def list_card(request):
     card=Card.objects.all()
     return render(request,"wallet/list_card.html",
     {"card":card}) 
+
+
+def card_profile(request,id):
+    card=Card.objects.get(id=id)
+    return render(request, "wallet/card_profile.html",{"card":card})       
 
 def register_third_party(request):
     if request.method=="POST":
@@ -145,6 +174,9 @@ def list_third_party(request):
     return render(request,"wallet/list_third_party.html",
     {"third_party":third_party}) 
     
+def third_party_profile(request,id):
+    third_party=Third_Party.objects.get(id=id)
+    return render(request, "wallet/third_party_profile.html",{"third_party":third_party}) 
 
 def register_reciept(request):
     if request.method=="POST":
@@ -161,6 +193,10 @@ def list_reciept(request):
     return render(request,"wallet/list_reciept.html",
     {"reciept":reciept}) 
 
+def reciept_profile(request,id):
+    reciept=Receipt.objects.get(id=id)
+    return render(request, "wallet/reciept_profile.html",{"reciept":reciept}) 
+
 def register_loan(request):
     if request.method=="POST":
          form=LoanRegistrationForm(request.POST)
@@ -175,6 +211,10 @@ def list_loan(request):
     loan=Loan.objects.all()
     return render(request,"wallet/list_loan.html",
     {"loan":loan}) 
+
+def loan_profile(request,id):
+    loan=Loan.objects.get(id=id)
+    return render(request, "wallet/loan_profile.html",{"loan":loan})     
 
 def register_reward(request):
     if request.method=="POST":
@@ -191,6 +231,9 @@ def list_reward(request):
     return render(request,"wallet/list_reward.html",
     {"reward":reward})  
  
+def reward_profile(request,id):
+   reward=Reward.objects.get(id=id)
+   return render(request, "wallet/reward_profile.html",{"reward":reward})  
 
 
 
