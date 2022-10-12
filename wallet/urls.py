@@ -1,5 +1,5 @@
 from django.urls import path 
-from .views import account_profile, card_profile, currency_profile, customer_profile, edit_customer, list_account, list_card, list_currency, list_customers, list_loan, list_notifications, list_reciept, list_reward, list_third_party, list_transaction, list_wallet, loan_profile, notifications_profile, reciept_profile, register_account, register_card, register_currency, register_loan, register_notifications, register_reciept, register_reward, register_third_party, register_transaction, register_wallet,register_customer, reward_profile, third_party_profile, transaction_profile, wallet_profile
+from .views import account_profile, card_profile, currency_profile, customer_profile, edit_profile, list_account, list_card, list_currency, list_customers, list_loan, list_notifications, list_reciept, list_reward, list_third_party, list_transaction, list_wallet, loan_profile, notifications_profile, reciept_profile, register_account, register_card, register_currency, register_loan, register_notifications, register_reciept, register_reward, register_third_party, register_transaction, register_wallet,register_customer, reward_profile, third_party_profile, transaction_profile, wallet_profile
 
 urlpatterns=[
     path("register/",register_customer,name="registration"),
@@ -15,7 +15,7 @@ urlpatterns=[
     path("reward/",register_reward,name="registration"),
 
 
-    path("list",list_customers,name="list_customers"),
+    path("customers",list_customers,name="list_customers"),
     path("currency's",list_currency,name="list_currency"),
     path("wallets",list_wallet,name="list_wallet"),
     path("accounts",list_account,name="list_account"),
@@ -29,22 +29,22 @@ urlpatterns=[
 
 
     
-    path("customer/<int:id>/",customer_profile, name="customer_profile"),
-    path("wallet/<int:id>/",wallet_profile, name="wallet_profile"),
-    path("currency/<int:id>/",currency_profile, name="currency_profile"),
-    path("account/<int:id>/",account_profile, name="account_profile"),
-    path("transaction/<int:id>/",transaction_profile, name="transaction_profile"),
-    path("card/<int:id>/",card_profile, name="card_profile"),
-    path("third_party/<int:id>/",third_party_profile, name="third_party_profile"),
-    path("notifications/<int:id>/",notifications_profile, name="notifications_profile"),
-    path("reciept/<int:id>/",reciept_profile, name="reciept_profile"),
-    path("loan/<int:id>/",loan_profile, name="loan_profile"),
-    path("reward/<int:id>/",reward_profile, name="reward_profile"),
+    path("customer's/<int:id>/",customer_profile, name="customer_profile"),
+    path("wallets/<int:id>/",wallet_profile, name="wallet_profile"),
+    path("currency's/<int:id>/",currency_profile, name="currency_profile"),
+    path("accounts/<int:id>/",account_profile, name="account_profile"),
+    path("transactions/<int:id>/",transaction_profile, name="transaction_profile"),
+    path("cards/<int:id>/",card_profile, name="card_profile"),
+    path("third_partys/<int:id>/",third_party_profile, name="third_party_profile"),
+    path("notification/<int:id>/",notifications_profile, name="notifications_profile"),
+    path("reciepts/<int:id>/",reciept_profile, name="reciept_profile"),
+    path("loans/<int:id>/",loan_profile, name="loan_profile"),
+    path("rewards/<int:id>/",reward_profile, name="reward_profile"),
 
 
 
 
 
 
-    path("customer/edit/<int:id>/",edit_customer, name="edit_customer"),
+    path("customer/edit/<int:id>/",edit_profile, name="edit_profile"),
 ]

@@ -25,7 +25,7 @@ def customer_profile(request,id):
     return render(request, "wallet/customer_profile.html",{"customer":customer})
 
     
-def edit_customer(request,id):
+def edit_profile(request,id):
     customer=Customer.objects.get(id=id)
     if request.method=="POST":
          form=CustomerRegistrationForm(request.POST,instance=customer)
@@ -34,7 +34,7 @@ def edit_customer(request,id):
          return redirect("customer_profile",id=Customer.id)
     else:
         form=CustomerRegistrationForm()
-    return render (request,"wallet/edit_customer.html",
+    return render (request,"wallet/edit_profile.html",
     {'form':form})
 
 def register_currency(request):
