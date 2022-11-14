@@ -1,7 +1,7 @@
 from django.db import router
 from django.urls import path,include
 from rest_framework import routers
-from.views import AccountViewsets, CardViewsets, CustomerViewsets, LoanViewsets, NotificationsViewsets, ReceiptViewsets, TransactionViewsets, WalletViewsets
+from.views import AccountDepositView, AccountViewsets, CardViewsets, CustomerViewsets, LoanViewsets, NotificationsViewsets, ReceiptViewsets, TransactionViewsets, WalletViewsets
 
 router=routers.DefaultRouter()
 router.register("customers",CustomerViewsets)
@@ -15,7 +15,10 @@ router.register("receipts",ReceiptViewsets)
 
 
 urlpatterns = [
-    path("",include(router.urls))
+    path("",include(router.urls)),
+    path("deposit/", AccountDepositView.as_view(), name="deposit-view"),
+
+
    
 
 

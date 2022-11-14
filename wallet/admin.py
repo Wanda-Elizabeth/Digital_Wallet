@@ -19,7 +19,7 @@ class CurrencyAdmin(admin.ModelAdmin):
 admin.site.register(Currency,CurrencyAdmin)
 
 class AccountAdmin(admin.ModelAdmin):
-    list_display=("account_number","account_type","balance")
+    list_display=("account_id","account_type","balance")
     search_fields=("account_number","account_type",)
 admin.site.register(Account,AccountAdmin)
 

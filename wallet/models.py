@@ -1,4 +1,5 @@
 from django.db import models
+from sqlalchemy import null
 # from requests import delete
 
 # Create your models here.
@@ -11,7 +12,7 @@ class Customer(models.Model):
     nationality = models.CharField(max_length=15,null=True)
     id_number = models.CharField(max_length=10,null=True)
     phone_number = models.CharField(max_length=15,null=True)
-    email = models.EmailField()
+    email = models.EmailField(max_length=30)
     profile_picture = models.ImageField(default='default.jpg', upload_to='profile_pics')
     marital_status=models.CharField(max_length=8,null=True)
     employment_status = models.BooleanField(null=True)
@@ -35,12 +36,24 @@ class Wallet(models.Model):
 
 
 class Account(models.Model):
-    account_number = models.IntegerField()
+    account_id = models.IntegerField()
     account_type = models.CharField(max_length=30)
     balance = models.IntegerField()
     saving=models.IntegerField(null=True)
     name = models.CharField(max_length=30)
     wallet = models.ForeignKey(Wallet, on_delete= models.CASCADE)
+def deposit(self, amount):
+       if amount <= 0:
+           message =  "Invalid amount"
+           status = 403
+       else:
+           self.account_balance += amount
+           self.save()
+           message = f"You have deposited {amount}, your new balance is {self.account_balance}"
+           status = 200
+       return message, status
+
+    
 
 class Transaction(models.Model):
     transaction_code = models.CharField(max_length=30,null=True)
@@ -48,7 +61,7 @@ class Transaction(models.Model):
     transaction_amount = models.IntegerField()
     transaction_type = models.CharField(max_length=30)
     transaction_charge = models.IntegerField()
-    transaction_time = models.DateTimeField()
+    transaction_time = models.DateTimeField(null=True)
     reciept = models.CharField(max_length=8,null=True)
     origin_account = models.ForeignKey(Customer, on_delete=models.CASCADE,null=True)
     destination_account = models.ForeignKey(Account, on_delete=models.CASCADE,null=True)
